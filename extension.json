@@ -1,0 +1,240 @@
+{
+  "displayName": "Twitter",
+  "name": "twitter-connector-edge",
+  "iconPath": "resources/icons/twitter-logo.svg",
+  "platform": "edge",
+  "version": "1.0.0",
+  "description": "Forward data to Twitter by using the Twitter Ads API.",
+  "author": {
+    "name": "Adobe",
+    "url": "http://adobe.com"
+  },
+  "exchangeUrl": "https://exchange.adobe.com/apps/ec/109773/twitter",
+  "viewBasePath": "dist/",
+  "configuration": {
+    "viewPath": "configuration/configuration.html",
+    "schema": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "type": "object",
+      "properties": {
+        "pixelId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authentication": {
+          "type": "object",
+          "properties": {
+            "consumerKey": {
+              "type": "string",
+              "minLength": 1
+            },
+            "consumerSecret": {
+              "type": "string",
+              "minLength": 1
+            },
+            "token": {
+              "type": "string",
+              "minLength": 1
+            },
+            "tokenSecret": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": false,
+          "required": ["consumerKey", "consumerSecret", "token", "tokenSecret"]
+        }
+      },
+      "additionalProperties": false,
+      "required": ["pixelId", "authentication"]
+    }
+  },
+  "actions": [
+    {
+      "displayName": "Send Web Conversion",
+      "name": "send-web-conversion",
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "user_identification": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "hashed_phone_number": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "hashed_email": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "twclid": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": ["hashed_phone_number"],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "hashed_phone_number": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "hashed_email": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "twclid": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": ["hashed_email"],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "hashed_phone_number": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "hashed_email": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "twclid": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": ["twclid"],
+                "additionalProperties": false
+              }
+            ]
+          },
+          "event": {
+            "type": "object",
+            "properties": {
+              "conversion_time": {
+                "type": "string",
+                "minLength": 1
+              },
+              "event_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "number_items": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  {
+                    "type": "number"
+                  }
+                ]
+              },
+              "price_currency": {
+                "type": "string",
+                "minLength": 1
+              },
+              "value": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  {
+                    "type": "number"
+                  }
+                ]
+              },
+              "conversion_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1
+              },
+              "contents": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    },
+                    "minContains": 1
+                  }
+                ]
+              }
+            },
+            "additionalProperties": false
+          },
+          "custom_data": {
+            "type": "object",
+            "properties": {
+              "currency": {
+                "type": "string",
+                "minLength": 1
+              },
+              "value": {
+                "type": "string",
+                "minLength": 1
+              },
+              "search_string": {
+                "type": "string",
+                "minLength": 1
+              },
+              "order_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "num_items": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  {
+                    "type": "number"
+                  }
+                ]
+              },
+              "contents": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "content_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "additionalProperties": false
+          },
+          "isTestEvent": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "libPath": "src/lib/actions/sendWebConversion.js",
+      "viewPath": "actions/sendWebConversion.html"
+    }
+  ]
+}

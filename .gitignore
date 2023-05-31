@@ -1,0 +1,9 @@
+node_modules
+coverage
+test_results
+dist
+.sandbox
+.entries
+adobe-reactor-extension-twitter-edge-*.tgz
+package-twitter-connector-edge-*.zip
+.eslintcache

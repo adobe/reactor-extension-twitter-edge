@@ -1,0 +1,9 @@
+__tests__
+src/view
+createEntryFile.mjs
+\.*
+webpack.*
+coverage
+jest.config.js
+package-twitter-connector-edge-*.zip
+adobe-reactor-extension-twitter-edge-*.tgz
