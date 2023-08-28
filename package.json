@@ -1,7 +1,7 @@
 {
   "name": "@adobe/reactor-extension-twitter-edge",
   "platform": "edge",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Forward data to Twitter by using the Twitter Ads API.",
   "author": {
     "name": "Adobe",
