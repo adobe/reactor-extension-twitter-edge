@@ -3,7 +3,7 @@
   "name": "twitter-connector-edge",
   "iconPath": "resources/icons/twitter-logo.svg",
   "platform": "edge",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Forward data to Twitter by using the Twitter Ads API.",
   "author": {
     "name": "Adobe",

@@ -33,8 +33,10 @@ const generateSignature = async (signKey, signatureBaseString) => {
   // than String.fromCharCode.
   // const digest = new TextDecoder().decode(new Uint8Array(signature));
   const digest = String.fromCharCode(...new Uint8Array(signature));
-
-  return encodeURIComponent(Buffer.from(digest, 'binary').toString('base64'));
+  const base64Digest = btoa
+    ? btoa(digest)
+    : Buffer.from(digest, 'binary').toString('base64');
+  return encodeURIComponent(base64Digest);
 };
 
 module.exports = async (
